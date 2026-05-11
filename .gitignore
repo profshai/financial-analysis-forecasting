@@ -1,0 +1,41 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+.env/
+.venv/
+env/
+
+
+# Mac system files
+.DS_Store
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+
+# Large or raw data files
+data/
+*.zip
+*.csv
+
+# Model files
+*.pkl
+*.joblib
+*.h5
+
+# Generated outputs
+outputs/
+
+# Figures
+figures/
