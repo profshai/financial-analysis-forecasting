@@ -38,4 +38,5 @@ data/
 outputs/
 
 # Figures
-figures/
+figures/.ipynb_checkpoints/
+**/.ipynb_checkpoints/
