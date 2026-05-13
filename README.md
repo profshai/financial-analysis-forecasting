@@ -41,37 +41,6 @@ A growing technology and services company wants to understand:
 
 ---
 
-## Repository Structure
-
-```text
-financial-analysis-forecasting-portfolio/
-│
-├── README.md
-├── requirements.txt
-│
-├── data/
-│   ├── README.md
-│   ├── simulated_financial_transactions.csv
-│   ├── monthly_budget_targets.csv
-│   ├── monthly_financial_statements.csv
-│   ├── macro_indicators_monthly.csv
-│   └── data_dictionary.csv
-│
-├── notebooks/
-│   └── 01_end_to_end_financial_analysis_forecasting.ipynb
-│
-├── figures/
-│   └── Generated charts saved here
-│
-├── outputs/
-│   └── Cleaned data, summary tables, forecasts, and model results saved here
-│
-└── scripts/
-    └── generate_financial_data.py
-```
-
----
-
 ## Dataset Description
 
 The project includes four main simulated datasets.
