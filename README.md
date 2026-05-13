@@ -1,6 +1,6 @@
 # End-to-End Financial Analysis and Forecasting Portfolio Project
 
-![Scenario Analysis](../figures/prophet_revenue_scenario_analysis.png)
+![Scenario Analysis](end-to-end-project/figures/prophet_revenue_scenario_analysis.png)
 
 ## Project Overview
 
