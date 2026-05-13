@@ -1,5 +1,7 @@
 # End-to-End Financial Analysis and Forecasting Portfolio Project
 
+![Scenario Analysis](../figures/prophet_revenue_scenario_analysis.png)
+
 ## Project Overview
 
 This project is a full end-to-end financial analysis and forecasting case study built with Python. It is designed for financial analyst, FP&A analyst, revenue analyst, business analyst, forecasting analyst, and data analyst roles.
