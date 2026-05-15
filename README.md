@@ -1,29 +1,61 @@
-# End-to-End Financial Analysis and Forecasting Portfolio Project
+# Financial Analysis and Forecasting
 
 ![Scenario Analysis](end-to-end-project/figures/prophet_revenue_scenario_analysis.png)
 
-## Project Overview
-
-This project is a full end-to-end financial analysis and forecasting case study built with Python. It is designed for financial analyst, FP&A analyst, revenue analyst, business analyst, forecasting analyst, and data analyst roles.
-
-The project uses simulated company-level financial data to analyze revenue performance, profitability, margins, budget variance, customer concentration, working capital, cash flow, and revenue forecasting.
-
-The goal is to show that I can move beyond basic charts and answer business questions that matter to finance teams.
+This repository contains Python portfolio projects focused on financial analysis, forecasting, and business decision-making. The projects use realistic simulated datasets to demonstrate data cleaning, exploratory analysis, KPI development, forecasting, model comparison, and executive-level interpretation.
 
 ---
 
-## Business Problem
+## Project 1: End-to-End Financial Analysis and Forecasting
 
-A growing technology and services company wants to understand:
+The project analyzes revenue, profitability, budget variance, customer concentration, working capital, cash flow, and monthly revenue forecasting using  simulated company financial data to answer practical finance and FP&A questions.
 
-1. What is driving revenue growth?
-2. Which products, regions, and sales channels are most profitable?
-3. Where is the company missing or beating budget?
-4. Are discounts helping revenue or hurting margins?
-5. Which customers contribute the most revenue?
-6. How efficiently is the company converting sales into cash?
-7. Can monthly revenue be forecasted accurately?
-8. What actions should leadership take?
+- What drives revenue growth?
+- Which products, regions, and channels are most profitable?
+- Are discounts helping revenue or hurting margins?
+- Where is the company beating or missing budget?
+- How efficiently does the company convert sales into cash?
+- Can monthly revenue be forecasted accurately?
+
+### Summary of Results
+
+- FY2025 performance showed approximately **$119.1M in revenue**, **$61.4M in gross profit**, and a **52% gross margin**.
+- **Subscription** and **Data Platform** were the strongest product lines because they combined high revenue with high margins.
+- **Hardware** generated meaningful revenue but had the weakest gross margin, making it a priority for pricing, cost, or supplier review.
+- Higher discount levels were associated with weaker margins and higher return rates.
+- All product lines finished below budget, with the largest shortfalls coming from Subscription and Data Platform.
+- Customer concentration risk was low, while Enterprise customers generated the highest revenue per customer.
+- Prophet produced the best monthly revenue forecasting performance and was used for the final forward forecast.
+
+---
+
+## Project 2: Energy Consumption Forecasting
+
+This project forecasts hourly building energy consumption using **1,000 hourly observations**. The dataset includes temperature, humidity, square footage, occupancy, HVAC usage, lighting usage, renewable energy, holiday status, day of week, and energy consumption.
+
+### Methods Used
+
+- Hourly time-series preparation
+- Daily aggregation and rolling averages
+- Temperature and energy relationship analysis
+- Stationarity testing
+- Lag features for previous hour, same hour yesterday, and same hour last week
+- Categorical encoding
+- Random Forest forecasting
+- Prophet forecasting
+- Prophet with regressors
+- Model comparison using MAE, RMSE, MAPE, and R²
+
+### Summary of Results
+
+- Energy consumption and temperature had a strong positive relationship, with a correlation of about **0.69**.
+- The energy series was likely stationary based on the ADF test.
+- The same-hour-yesterday baseline performed poorly, with a **MAPE of 11.82%** and a negative R².
+- Plain Prophet improved on the baseline but performed weaker than models using external predictors.
+- Prophet with regressors improved performance by adding weather, occupancy, and renewable energy variables.
+- The **Improved Random Forest** model performed best, with approximately **5.24% MAPE** and **0.60 R²**.
+
+The results suggest that hourly energy consumption is better predicted using weather, occupancy, building usage behavior, and lagged consumption than by simple time patterns alone.
 
 ---
 
@@ -37,368 +69,26 @@ A growing technology and services company wants to understand:
 - Plotly
 - Scikit-learn
 - Statsmodels
+- Prophet
 - Jupyter Notebook
 
 ---
 
-## Dataset Description
-
-The project includes four main simulated datasets.
-
-### 1. Invoice-Level Transactions
-
-`simulated_financial_transactions.csv`
-
-This file contains transaction-level financial data, including:
-
-- Invoice date
-- Region
-- Product line
-- Sales channel
-- Customer segment
-- Industry
-- Units sold
-- Unit price
-- Discount rate
-- Net revenue
-- Cost of goods sold
-- Gross profit
-- Gross margin
-- Payment terms
-- Days to collect
-- Return flag
-
-### 2. Monthly Budget Targets
-
-`monthly_budget_targets.csv`
-
-This file contains budgeted revenue, cost, gross profit, units, and discount assumptions by month, region, and product line.
-
-### 3. Monthly Financial Statements
-
-`monthly_financial_statements.csv`
-
-This file contains company-level monthly financial metrics:
-
-- Revenue
-- COGS
-- Gross profit
-- Operating expenses
-- EBITDA
-- Operating income
-- Net income
-- Accounts receivable
-- Inventory
-- Accounts payable
-- Capital expenditures
-- Free cash flow
-
-### 4. Macroeconomic Indicators
-
-`macro_indicators_monthly.csv`
-
-This file contains simulated external variables used for forecasting:
-
-- Interest rate
-- Inflation rate
-- Unemployment rate
-- Business confidence index
-- Market index
-- Exchange rate index
-
----
-
-## Core Financial Metrics
-
-The project calculates and interprets:
-
-| Metric | Formula |
-|---|---|
-| Gross Profit | Revenue minus COGS |
-| Gross Margin | Gross Profit divided by Revenue |
-| EBITDA Margin | EBITDA divided by Revenue |
-| Net Margin | Net Income divided by Revenue |
-| Revenue Growth | Current Revenue divided by Prior Revenue minus 1 |
-| Budget Variance | Actual minus Budget |
-| Budget Variance Percent | Actual divided by Budget minus 1 |
-| Average Selling Price | Revenue divided by Units |
-| Discount Rate | Discount divided by Gross Price |
-| Days Sales Outstanding | Accounts Receivable divided by Revenue times Days in Month |
-| Inventory Days | Inventory divided by COGS times Days in Month |
-| Payables Days | Accounts Payable divided by COGS times Days in Month |
-| Cash Conversion Cycle | DSO plus Inventory Days minus Payables Days |
-| Free Cash Flow Margin | Free Cash Flow divided by Revenue |
-
----
-
-## Analysis Sections
-
-The notebook is organized as a professional financial analytics workflow.
-
-### 1. Data Loading and Initial Inspection
-
-The analysis begins by loading all CSV files and checking:
-
-- Dataset shape
-- Column names
-- Missing values
-- Duplicate records
-- Data types
-- Date fields
-
-### 2. Data Cleaning
-
-The raw transaction data intentionally includes common real-world problems:
-
-- Duplicate rows
-- Missing values
-- Inconsistent text spacing
-- Missing discount rates
-- Missing gross margin values
-- Outlier invoices
-
-The notebook cleans these issues and creates analysis-ready data.
-
-### 3. Executive KPI Dashboard
-
-The project calculates headline finance KPIs:
-
-- Total revenue
-- Gross profit
-- Gross margin
-- EBITDA
-- EBITDA margin
-- Net income
-- Net margin
-- Free cash flow
-- Return rate
-- Average days to collect
-
-### 4. Revenue Analysis
-
-The notebook analyzes revenue by:
-
-- Product line
-- Region
-- Sales channel
-- Customer segment
-- Industry
-- Month and year
-
-This helps identify the strongest sources of revenue growth.
-
-### 5. Profitability Analysis
-
-The project studies:
-
-- Gross profit by product line
-- Gross margin by product line
-- EBITDA margin over time
-- Product lines with high revenue but weak margins
-- Discount impact on gross margin
-
-### 6. Budget vs Actual Variance Analysis
-
-The notebook joins actuals with budgets and calculates:
-
-- Revenue variance
-- COGS variance
-- Gross profit variance
-- Unit variance
-- Variance percentage
-- Favorable and unfavorable budget performance
-
-This is especially relevant for FP&A roles.
-
-### 7. Customer Concentration Analysis
-
-The project identifies:
-
-- Top customers by revenue
-- Customer revenue concentration
-- Share of revenue from top 10 customers
-- Customer segment profitability
-
-This helps assess business dependency risk.
-
-### 8. Working Capital and Cash Flow Analysis
-
-The notebook analyzes:
-
-- Days Sales Outstanding
-- Inventory days
-- Payables days
-- Cash conversion cycle
-- Free cash flow margin
-
-This section connects income statement performance to cash flow.
-
-### 9. Forecasting
-
-The notebook forecasts monthly revenue using:
-
-- Seasonal naive baseline
-- Exponential smoothing
-- Machine learning regression with lagged revenue and macro indicators
-
-Forecast performance is evaluated using:
-
-- MAE
-- RMSE
-- MAPE
-
-The model then produces a forward-looking revenue forecast.
-
-### 10. Scenario Analysis
-
-The project includes simple base, upside, and downside scenarios based on assumptions about:
-
-- Revenue growth
-- Margin improvement
-- Cost pressure
-- Cash flow conversion
-
----
-
-## Example Business Questions Answered
-
-### What drives revenue?
-
-Revenue is driven by product mix, customer segment, pricing, sales channel, seasonality, and enterprise account activity.
-
-### What drives profit?
-
-Profit is driven by revenue scale, product gross margin, discount discipline, operating expense control, and product mix.
-
-### Which products have high sales but weak margins?
-
-The analysis compares revenue contribution against gross margin to identify products that sell well but generate weaker profitability.
-
-### Are discounts helping or hurting?
-
-The notebook groups transactions into discount bands and compares revenue, gross margin, return rates, and customer behavior.
-
-### Is the company beating budget?
-
-Budget variance analysis identifies where actual revenue and gross profit are above or below plan by month, region, and product line.
-
-### Can revenue be forecasted?
-
-The forecasting section compares models and produces a forward monthly revenue forecast.
-
----
-
-## How to Run This Project
-
-### 1. Clone the Repository
-
-```bash
-git clone git@github.com:profshai/financial-analysis-forecasting.git
-cd financial-analysis-forecasting
-```
-
-### 2. Create a Virtual Environment
-
-```bash
-python -m venv venv
-```
-
-### 3. Activate the Environment
-
-Mac or Linux:
-
-```bash
-source venv/bin/activate
-```
-
-Windows:
-
-```bash
-venv\Scripts\activate
-```
-
-### 4. Install Requirements
-
-```bash
-pip install -r requirements.txt
-```
-
-### 5. Launch Jupyter
-
-```bash
-jupyter notebook
-```
-
-Then open:
-
-```text
-notebooks/01_end_to_end_financial_analysis_forecasting.ipynb
-```
-
----
-
-## Outputs
-
-The notebook saves outputs to the `outputs/` folder, including:
-
-- Cleaned transaction data
-- Executive KPI summary
-- Revenue by product line
-- Profitability summary
-- Budget variance table
-- Customer concentration table
-- Forecast results
-- Scenario analysis table
-
-The notebook saves charts to the `figures/` folder.
-
----
-
-## Why This Project Matters for Finance Jobs
-
-This project demonstrates job-relevant skills for financial analysis and forecasting roles:
-
-- Data cleaning and preparation
-- Financial KPI development
-- Revenue analysis
-- Margin analysis
+## Skills Demonstrated
+
+- Data cleaning and preprocessing
+- Exploratory data analysis
+- Financial KPI analysis
 - Budget variance analysis
-- Customer concentration analysis
 - Working capital analysis
-- Time series forecasting
+- Time-series feature engineering
+- Forecasting model comparison
+- Machine learning regression
 - Scenario analysis
-- Business communication
-- Executive-level recommendations
+- Business interpretation and reporting
 
 ---
 
-## Suggested Resume Bullet
+## Why This Repository Matters
 
-Built an end-to-end financial analysis and forecasting project in Python using simulated invoice-level and monthly financial statement data; analyzed revenue drivers, gross margins, budget variance, customer concentration, working capital efficiency, and forecasted monthly revenue using statistical and machine learning methods.
-
----
-
-## Limitations
-
-The data is simulated and does not represent any real company. However, the structure is designed to reflect realistic finance analytics tasks, including messy data, seasonality, outliers, discount behavior, budget variance, and working capital dynamics.
-
----
-
-## Future Improvements
-
-Planned extensions include:
-
-- Power BI or Tableau dashboard
-- SQL version of the analysis
-- Streamlit financial dashboard
-- More advanced forecasting models
-- Cohort retention analysis
-- Revenue bridge analysis
-- Automated monthly finance reporting
-- Sensitivity analysis and Monte Carlo simulation
-
----
-
-## Final Takeaway
-
-This project shows how Python can be used to perform professional financial analysis from raw data to executive insights. It combines accounting logic, financial metrics, business interpretation, and forecasting in a way that is directly relevant to finance and analytics roles.
+This repository demonstrates how Python can be used to solve practical finance, forecasting, and business analytics problems. The projects move from raw data to cleaned datasets, visual analysis, model comparison, and clear recommendations that are relevant for business growth.
