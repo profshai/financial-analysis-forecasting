@@ -1,5 +1,7 @@
 # Financial Analysis and Forecasting Portfolio Project
 
+![Top 5 Models](figures/top_5_models_forecast_comparison.png)
+
 ## Project Overview
 
 This project is an end to end financial analysis and forecasting case study built with Python. It uses simulated company financial data to analyze revenue performance, profitability, budget variance, customer concentration, working capital, cash flow, and monthly revenue forecasting.
